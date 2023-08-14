@@ -22,7 +22,7 @@ export default function Movies() {
   }
 
   return (
-    <div className="container grid items-center justify-center grid-cols-2 gap-4 p-8 mx-auto md:grid-cols-4">
+    <div className="container items-center justify-center p-8 mx-auto gap-y-4 md:gap-8 md:grid sm:flex sm:flex-col md:grid-cols-4">
       {movies?.map((movie, index) => {
         return <MovieItem key={index} {...movie} />;
       })}
