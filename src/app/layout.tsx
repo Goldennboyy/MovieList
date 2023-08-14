@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html data-theme="dark" lang="fr">
       <QueryClientProvider client={queryClient}>
-        <body className="w-full mx-auto max-w-8xl">
+        <body>
           <Navbar />
           {children}
         </body>

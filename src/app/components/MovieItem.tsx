@@ -5,21 +5,29 @@ import { IMGPATH, Result } from "../interfaces/Movies";
 import VotingColor from "./VotingColor";
 
 export default function MovieItem(props: Result) {
+  function formatDate(date: any) {
+    return new Date(date).toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  }
+
   return (
-    <div className="w-72 card">
-      <figure className="object-fill">
+    <div className="items-center justify-center mx-auto w-fit md:h-fit md:w-40 lg:w-72 card">
+      <figure className="object-cover">
         <Image
           src={IMGPATH + props.poster_path}
           alt={props.title}
-          width={300}
-          height={300}
+          width={280}
+          height={280}
         />
       </figure>
-      <div className="card-body bg-slate-900/50">
+      <div className="w-full card-body bg-slate-900/50">
         <div className="flex flex-col">
           <h2 className="text-sm card-title">{props.title}</h2>
           <div className="flex flex-row justify-between">
-            <span>{props.release_date}</span>
+            <span>{formatDate(props.release_date)}</span>
             <VotingColor {...props} />
           </div>
         </div>

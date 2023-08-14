@@ -5,7 +5,7 @@ import MovieItem from "./MovieItem";
 
 export default function Movies() {
   const apiKey = "89d6c10c1df79dfb6a461aeae58d5c5c";
-  const { data: movies, isLoading } = useQuery("movies", async () => {
+  const { data: movies } = useQuery("movies", async () => {
     const res = await fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
     );
@@ -17,12 +17,8 @@ export default function Movies() {
     return jsonData.results;
   });
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
   return (
-    <div className="container items-center justify-center p-8 mx-auto gap-y-4 md:gap-8 md:grid sm:flex sm:flex-col md:grid-cols-4">
+    <div className="container justify-around w-full gap-10 p-4 mx-auto mb-2 overflow-x-auto md:items-center md:gap-y-3 md:grid sm:flex sm:flex-col md:grid-cols-2 lg:grid-cols-3">
       {movies?.map((movie, index) => {
         return <MovieItem key={index} {...movie} />;
       })}
